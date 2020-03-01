@@ -671,8 +671,8 @@ class RestController extends \CI_Controller
 
             if ($continue === false) {
                 // Display the data and exit execution
-                $this->output->_display();
-                exit;
+                //$this->output->_display(); // comment out, to prevent double output since return flush buffers
+                return; // change from `exit` to prevent phpunit stop executing
             } else {
                 if (is_callable('fastcgi_finish_request')) {
                     // Terminates connection and returns response to client on PHP-FPM.
